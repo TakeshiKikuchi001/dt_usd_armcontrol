@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="ur_epick_stand" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="aluminum">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+
+  <xacro:macro name="ur_epick_stand" params="name:=ur_epick_stand" >
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="${name}_origin_frame" />
+    </joint>
+
+    <link name="${name}_origin_frame" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://ur_stand_description/meshes/ur_epick_stand.stl" />
+        </geometry>
+        <material name="aluminum"/>
+      </visual>
+    </link>
+
+    <joint name="${name}_link_joint" type="fixed">
+      <origin xyz="0 0 0.975" rpy="0 0 0" />
+      <parent link="${name}_origin_frame" />
+      <child link="${name}_link" />
+    </joint>
+
+    <link name="${name}_link" />
+  </xacro:macro>
+
+  <link name="base_link" />
+  <xacro:ur_epick_stand />
+</robot>

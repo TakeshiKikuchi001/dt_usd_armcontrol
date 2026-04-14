@@ -6,6 +6,7 @@ import os
 from typing import List, Dict, Optional
 import json
 from urdf_converter import URDFConverter
+from xacro_converter import XacroConverter
 
 
 class RobotModelManager:
@@ -104,89 +105,55 @@ class RobotModelManager:
             "num_joints": 6,
             "description": "Panasonic NOVA 5協働ロボット + ePick真空グリッパー (URDF)"
         },
-        "p1_ur5e_2f140": {
-            "name": "UR5e + 2F-140グリッパー",
-            "manufacturer": "Universal Robots / Robotiq",
-            "path": "robot_models/my_urdf/p1_ur5e_2f140_for_isaac/p1_ur5e_2f140_for_isaac.usd",
-            "num_joints": 6,
-            "description": "UR5e協働ロボット + 2F-140グリッパー"
+        # Xacroモデル
+        "mg400_xacro": {
+            "name": "MG400 (Xacro)",
+            "manufacturer": "Dobot",
+            "path": "xacro_models/mg400.urdf.xacro",
+            "num_joints": 4,
+            "description": "Dobot MG400デスクトップロボット (Xacro)"
         },
-        "p2_ur5e_epick": {
-            "name": "UR5e + ePick真空グリッパー",
-            "manufacturer": "Universal Robots / Robotiq",
-            "path": "robot_models/my_urdf/p2_ur5e_epick_for_isaac/p2_ur5e_epick_for_isaac.usd",
-            "num_joints": 6,
-            "description": "UR5e協働ロボット + ePick真空グリッパー"
+        "robotiq2f140_xacro": {
+            "name": "Robotiq 2F-140 (Xacro)",
+            "manufacturer": "Robotiq",
+            "path": "xacro_models/robotiq2f140.urdf.xacro",
+            "num_joints": 2,
+            "description": "Robotiq 2F-140グリッパー (Xacro)"
         },
-        "p3_ur30_2f140": {
-            "name": "UR30 + 2F-140グリッパー",
-            "manufacturer": "Universal Robots / Robotiq",
-            "path": "robot_models/my_urdf/p3_ur30_2f140_for_isaac/p3_ur30_2f140_for_isaac.usd",
-            "num_joints": 6,
-            "description": "UR30大型協働ロボット + 2F-140グリッパー"
+        "robotiq2f85_xacro": {
+            "name": "Robotiq 2F-85 (Xacro)",
+            "manufacturer": "Robotiq",
+            "path": "xacro_models/robotiq2f85.urdf.xacro",
+            "num_joints": 2,
+            "description": "Robotiq 2F-85グリッパー (Xacro)"
         },
-        "p4_ur30_epick": {
-            "name": "UR30 + ePick真空グリッパー",
-            "manufacturer": "Universal Robots / Robotiq",
-            "path": "robot_models/my_urdf/p4_ur30_epick_for_isaac/p4_ur30_epick_for_isaac.usd",
-            "num_joints": 6,
-            "description": "UR30大型協働ロボット + ePick真空グリッパー"
+        "robotiq_epick_xacro": {
+            "name": "Robotiq ePick (Xacro)",
+            "manufacturer": "Robotiq",
+            "path": "xacro_models/robotiqEpick.urdf.xacro",
+            "num_joints": 0,
+            "description": "Robotiq ePick真空グリッパー (Xacro)"
         },
-        "p5_crx5ia_2f140": {
-            "name": "CRX-5iA + 2F-140グリッパー",
-            "manufacturer": "FANUC / Robotiq",
-            "path": "robot_models/my_urdf/p5_crx5ia_2f140_for_isaac/p5_crx5ia_2f140_for_isaac.usd",
-            "num_joints": 6,
-            "description": "FANUC CRX-5iA協働ロボット + 2F-140グリッパー"
+        "square_hand_xacro": {
+            "name": "Square Hand (Xacro)",
+            "manufacturer": "Panasonic",
+            "path": "xacro_models/square_hand.urdf.xacro",
+            "num_joints": 2,
+            "description": "Panasonic スクエアハンド (Xacro)"
         },
-        "p6_crx5ia_epick": {
-            "name": "CRX-5iA + ePick真空グリッパー",
-            "manufacturer": "FANUC / Robotiq",
-            "path": "robot_models/my_urdf/p6_crx5ia_epick_for_isaac/p6_crx5ia_epick_for_isaac.usd",
-            "num_joints": 6,
-            "description": "FANUC CRX-5iA協働ロボット + ePick真空グリッパー"
+        "epick_hand_xacro": {
+            "name": "ePick Hand (Xacro)",
+            "manufacturer": "Panasonic",
+            "path": "xacro_models/epick_hand.urdf.xacro",
+            "num_joints": 0,
+            "description": "Panasonic ePick Hand (Xacro)"
         },
-        "p7_crx30ia_2f140": {
-            "name": "CRX-30iA + 2F-140グリッパー",
-            "manufacturer": "FANUC / Robotiq",
-            "path": "robot_models/my_urdf/p7_crx30ia_2f140_for_isaac/p7_crx30ia_2f140_for_isaac.usd",
-            "num_joints": 6,
-            "description": "FANUC CRX-30iA大型協働ロボット + 2F-140グリッパー"
-        },
-        "p8_crx30ia_epick": {
-            "name": "CRX-30iA + ePick真空グリッパー",
-            "manufacturer": "FANUC / Robotiq",
-            "path": "robot_models/my_urdf/p8_crx30ia_epick/p8_crx30ia_epick.usd",
-            "num_joints": 6,
-            "description": "FANUC CRX-30iA大型協働ロボット + ePick真空グリッパー"
-        },
-        "p9_cr7_2f140": {
-            "name": "CR-7iA + 2F-140グリッパー",
-            "manufacturer": "FANUC / Robotiq",
-            "path": "robot_models/my_urdf/p9_cr7_2f140_for_isaac/p9_cr7_2f140_for_isaac.usd",
-            "num_joints": 6,
-            "description": "FANUC CR-7iA協働ロボット + 2F-140グリッパー"
-        },
-        "p10_cr7_epick": {
-            "name": "CR-7iA + ePick真空グリッパー",
-            "manufacturer": "FANUC / Robotiq",
-            "path": "robot_models/my_urdf/p10_cr7_epick_for_isaac/p10_cr7_epick_for_isaac.usd",
-            "num_joints": 6,
-            "description": "FANUC CR-7iA協働ロボット + ePick真空グリッパー"
-        },
-        "p11_nova5_2f140": {
-            "name": "NOVA 5 + 2F-140グリッパー",
-            "manufacturer": "Panasonic / Robotiq",
-            "path": "robot_models/my_urdf/p11_nova5_2f140_for_isaac/p11_nova5_2f140_for_isaac.usd",
-            "num_joints": 6,
-            "description": "Panasonic NOVA 5協働ロボット + 2F-140グリッパー"
-        },
-        "p12_nova5_epick": {
-            "name": "NOVA 5 + ePick真空グリッパー",
-            "manufacturer": "Panasonic / Robotiq",
-            "path": "robot_models/my_urdf/p12_nova5_epick_for_isaac/p12_nova5_epick_for_isaac.usd",
-            "num_joints": 6,
-            "description": "Panasonic NOVA 5協働ロボット + ePick真空グリッパー"
+        "onrobot_3fg15_xacro": {
+            "name": "OnRobot 3FG15 (Xacro)",
+            "manufacturer": "OnRobot",
+            "path": "xacro_models/onRobot3FG15.urdf.xacro",
+            "num_joints": 3,
+            "description": "OnRobot 3FG15 3フィンガーグリッパー (Xacro)"
         }
     }
     
@@ -201,6 +168,7 @@ class RobotModelManager:
         self.current_model_id = None
         self.current_stage = None
         self.current_urdf_converter = None  # URDF用
+        self.xacro_converter = XacroConverter()  # Xacro用
         
     def list_available_models(self) -> List[Dict]:
         """
@@ -226,7 +194,7 @@ class RobotModelManager:
     
     def load_model(self, model_id: str):
         """
-        指定されたロボットモデルを読み込む（USDまたはURDF）
+        指定されたロボットモデルを読み込む（USD、URDF、またはXacro）
         
         Args:
             model_id: モデルID
@@ -247,7 +215,26 @@ class RobotModelManager:
         
         try:
             # ファイル拡張子で判定
-            if full_path.endswith('.urdf'):
+            if full_path.endswith('.xacro'):
+                # Xacroファイル - まずURDFに変換
+                print(f"Converting xacro to URDF: {model_info['name']}")
+                urdf_path = self.xacro_converter.convert_xacro_to_urdf(
+                    os.path.basename(full_path)
+                )
+                
+                if urdf_path and os.path.exists(urdf_path):
+                    # 変換されたURDFを読み込む
+                    urdf_converter = URDFConverter(urdf_path)
+                    self.current_model_id = model_id
+                    self.current_urdf_converter = urdf_converter
+                    self.current_stage = None
+                    print(f"Successfully loaded Xacro model (converted to URDF): {model_info['name']}")
+                    return urdf_converter
+                else:
+                    print(f"Error: Failed to convert xacro to URDF")
+                    return None
+                    
+            elif full_path.endswith('.urdf'):
                 # URDFファイル
                 urdf_converter = URDFConverter(full_path)
                 self.current_model_id = model_id
@@ -265,6 +252,8 @@ class RobotModelManager:
                 return stage
         except Exception as e:
             print(f"Error loading model file: {e}")
+            import traceback
+            traceback.print_exc()
             return None
     
     def get_num_joints(self) -> int:

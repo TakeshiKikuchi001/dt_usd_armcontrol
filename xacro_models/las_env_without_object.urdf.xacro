@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="las_env_without_object" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="aluminum">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+
+  <xacro:macro name="las_env_without_object" params="name:=las_env_without_object" >
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="${name}_origin_frame" />
+    </joint>
+
+    <link name="${name}_origin_frame" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://las_description/meshes/las_env_without_object.stl" />
+        </geometry>
+        <material name="aluminum"/>
+      </visual>
+    </link>
+
+  </xacro:macro>
+
+  <link name="base_link" />
+  <xacro:las_env_without_object />
+</robot>

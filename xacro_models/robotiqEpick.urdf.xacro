@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot name="epick_motor_hand" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="aluminum">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robotiq_description/meshes/Epick/base_link.stl"/>
+      </geometry>
+      <material name="aluminum"/>
+    </visual>
+  </link>
+  <link name="tcp_link"/>
+  <joint name="tcp_link_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="tcp_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.2"/>
+  </joint>
+</robot>

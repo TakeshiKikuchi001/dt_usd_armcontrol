@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot name="mi_camera_yagura" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="aluminum">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0.1 0.1 0.1 1"/>
+  </material>
+
+  <xacro:macro name="mi_camera_yagura" params="name:=mi_camera_yagura" >
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="${name}_origin_frame" />
+    </joint>
+
+    <link name="${name}_origin_frame" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 -${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://rp_camera_yagura_description/meshes/mi_camera_yagura.stl" />
+        </geometry>
+        <material name="black"/>
+      </visual>
+    </link>
+
+    <joint name="${name}_link_joint" type="fixed">
+      <origin xyz="-0.51 0 0" rpy="0 0 0" />
+      <parent link="${name}_origin_frame" />
+      <child link="${name}_link" />
+    </joint>
+
+    <link name="${name}_link" />
+  </xacro:macro>
+
+  <link name="base_link" />
+  <xacro:mi_camera_yagura />
+</robot>

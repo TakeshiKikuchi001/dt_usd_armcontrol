@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot name="mi_hand" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:arg name="model_type" default="SQH30200" />
+  <xacro:property name="model_type" value="$(arg model_type)" />
+  <xacro:if value="${model_type == 'SQH30200'}">
+    <xacro:property name="finger_model" value="MH512507-03-000-4_V5.1-4_25.9.8.stl"/>
+    <xacro:property name="tool_distance" value="0.455"/>
+  </xacro:if>
+  <xacro:if value="${model_type == 'SQH50300'}">
+    <xacro:property name="finger_model" value="MH562507-03-000-4_V5.6-4_25.9.8.stl"/>
+    <xacro:property name="tool_distance" value="0.559"/>
+  </xacro:if>
+
+  <material name="aluminum">
+    <color rgba="0.9 0.9 0.9 1"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://mi_hand_description/meshes/MH512502-00-000_V5.1-2_Base.stl"/>
+      </geometry>
+      <material name="aluminum"/>
+    </visual>
+  </link>
+
+  <joint name="right_finger_link_joint" type="prismatic">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="right_finger_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <link name="right_finger_link" >
+    <visual>
+      <origin xyz="0 0 0.15212" rpy="0 0 3.141592"/>
+      <geometry>
+        <mesh filename="package://mi_hand_description/meshes/${finger_model}"/>
+      </geometry>
+      <material name="aluminum"/>
+    </visual>
+  </link>
+
+  <joint name="left_finger_link_joint" type="prismatic">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="left_finger_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <link name="left_finger_link" >
+    <visual>
+      <origin xyz="0 0 0.15212" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://mi_hand_description/meshes/${finger_model}"/>
+      </geometry>
+      <material name="aluminum"/>
+    </visual>
+  </link>
+
+  <joint name="tcp_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 ${tool_distance}"/>
+    <parent link="base_link"/>
+    <child link="tcp_link"/>
+  </joint>
+  <link name="tcp_link" />
+</robot>
