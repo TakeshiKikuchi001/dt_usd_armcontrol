@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<robot name="simple_robot_arm">
+  
+  <!-- ベースリンク -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.3 0.3 0.3 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- リンク1 -->
+  <link name="link_1">
+    <visual>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.3"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.2 0.4 0.8 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- ジョイント1 -->
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="100" lower="-3.14" upper="3.14" velocity="1.0"/>
+  </joint>
+  
+  <!-- リンク2 -->
+  <link name="link_2">
+    <visual>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.04" length="0.25"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.3 0.6 0.4 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- ジョイント2 -->
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-1.57" upper="1.57" velocity="1.0"/>
+  </joint>
+  
+  <!-- リンク3 -->
+  <link name="link_3">
+    <visual>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.2"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.8 0.5 0.2 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- ジョイント3 -->
+  <joint name="joint_3" type="revolute">
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="50" lower="-1.57" upper="1.57" velocity="1.0"/>
+  </joint>
+  
+  <!-- エンドエフェクタ -->
+  <link name="end_effector">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.04"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- ジョイント4（固定） -->
+  <joint name="joint_4" type="fixed">
+    <parent link="link_3"/>
+    <child link="end_effector"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  </joint>
+  
+</robot>

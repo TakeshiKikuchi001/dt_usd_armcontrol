@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ロボットアーム USD リアルタイムビューア</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🦾 ロボットアーム USD リアルタイムコントロール</h1>
+            <p>Babylon.js + WebSocket + USD による3Dビジュアライゼーション</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 3Dビューア -->
+            <div class="viewer-section">
+                <div class="viewer-header">
+                    <h2>3D ビューア (Babylon.js)</h2>
+                    <div class="viewer-controls">
+                        <button id="resetViewBtn" class="btn btn-secondary">ビューをリセット</button>
+                        <button id="toggleGridBtn" class="btn btn-secondary">グリッド切替</button>
+                    </div>
+                </div>
+                <canvas id="renderCanvas"></canvas>
+                <div class="viewer-info">
+                    <span id="fpsCounter">FPS: 60</span>
+                    <span id="connectionStatus" class="status-disconnected">未接続</span>
+                </div>
+            </div>
+
+            <!-- コントロールパネル -->
+            <div class="control-section">
+                <div class="control-header">
+                    <h2>ロボットモデル選択</h2>
+                </div>
+
+                <div class="model-selector">
+                    <label for="robotModelSelect">ロボットモデル:</label>
+                    <select id="robotModelSelect" class="model-select">
+                        <option value="">読み込み中...</option>
+                    </select>
+                    <button id="loadModelBtn" class="btn btn-primary">モデルをロード</button>
+                </div>
+
+                <div class="current-model-info" id="currentModelInfo">
+                    <h3>現在のモデル</h3>
+                    <p id="currentModelName">標準ロボットアーム</p>
+                    <p id="currentModelDesc" class="model-desc">6自由度ロボットアーム</p>
+                </div>
+
+                <div class="control-header">
+                    <h2>関節コントロール</h2>
+                    <button id="resetArmBtn" class="btn btn-primary">アームをリセット</button>
+                </div>
+
+                <div class="joint-controls" id="jointControls">
+                    <!-- JavaScriptで動的に生成 -->
+                </div>
+
+                <div class="preset-controls">
+                    <h3>プリセット姿勢</h3>
+                    <div class="preset-buttons">
+                        <button class="btn btn-preset" data-preset="home">ホーム姿勢</button>
+                        <button class="btn btn-preset" data-preset="reach">リーチ姿勢</button>
+                        <button class="btn btn-preset" data-preset="wave">ウェーブ</button>
+                        <button class="btn btn-preset" data-preset="random">ランダム</button>
+                    </div>
+                </div>
+
+                <div class="animation-controls">
+                    <h3>アニメーション</h3>
+                    <button id="animateBtn" class="btn btn-secondary">デモアニメーション開始</button>
+                    <button id="stopAnimateBtn" class="btn btn-secondary" disabled>停止</button>
+                </div>
+
+                <div class="info-panel">
+                    <h3>システム情報</h3>
+                    <div id="systemInfo">
+                        <p><strong>関節数:</strong> <span id="numJoints">-</span></p>
+                        <p><strong>USD ファイル:</strong> /tmp/robot_arm.usda</p>
+                        <p><strong>更新レート:</strong> リアルタイム</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/viewer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/controls.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/model_selector.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/debug.js') }}"></script>
+</body>
+</html>

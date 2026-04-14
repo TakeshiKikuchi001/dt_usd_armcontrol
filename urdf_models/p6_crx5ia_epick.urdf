@@ -1,0 +1,313 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="p6_crx5ia_epick">
+  <link name="world" />
+  <link name="ee_link" />
+  
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/visual/base.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/collision/base.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.695" />
+      <origin xyz="-0.02329 -0.00113 0.04668" />
+      <inertia ixx="0.004082061" ixy="0.000281666" ixz="0.001055913" iyy="0.008721822" iyz="4.52295E-05" izz="0.009813918" />
+    </inertial>
+  </link>
+  <link name="J1_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.185" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/visual/j1.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.5707963267948966" xyz="0 0 -0.185" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/collision/j1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5.173" />
+      <origin xyz="-0.00223 -0.04084 -0.03" />
+      <inertia ixx="0.027098156" ixy="-0.000166078" ixz="-0.000127776" iyy="0.015731396" iyz="-0.005631899" izz="0.0195838" />
+    </inertial>
+  </link>
+  <link name="J2_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0 0 -0.185" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/visual/j2.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.5707963267948966" xyz="-0.0 0 -0.185" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/collision/j2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5.014" />
+      <origin xyz="0.00013 -0.14378 0.18566" />
+      <inertia ixx="0.183168026" ixy="-3.67741E-05" ixz="0.000192371" iyy="0.178671177" iyz="0.01360861" izz="0.013395386" />
+    </inertial>
+  </link>
+  <link name="J3_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0 0 -0.595" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/visual/j3.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.5707963267948966" xyz="-0.0 0 -0.595" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/collision/j3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.133" />
+      <origin xyz="0.0303 -0.01286 -0.0002" />
+      <inertia ixx="0.005769799" ixy="0.001344252" ixz="1.14634E-05" iyy="0.008568956" iyz="1.8629E-06" izz="0.009083218" />
+    </inertial>
+  </link>
+  <link name="J4_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0 0 -0.595" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/visual/j4.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.5707963267948966" xyz="-0.0 0 -0.595" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/collision/j4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.508" />
+      <origin xyz="0.28287 0.00109 0.00019" />
+      <inertia ixx="0.003276324" ixy="-0.00164576" ixz="-1.35414E-05" iyy="0.053727933" iyz="-4.1252E-06" izz="0.053791595" />
+    </inertial>
+  </link>
+  <link name="J5_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.43 0 -0.595" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/visual/j5.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.5707963267948966" xyz="-0.43 0 -0.595" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/collision/j5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.434" />
+      <origin xyz="0.01442 -0.09491 0.00164" />
+      <inertia ixx="0.006167974" ixy="-0.001284188" ixz="-2.28931E-05" iyy="0.003922645" iyz="-0.00029073" izz="0.007292078" />
+    </inertial>
+  </link>
+  <link name="J6_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.43 0.13 -0.595" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/visual/j6.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://merge/mesh/crx5ia/collision/j6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.272" />
+      <origin xyz="0.10028 0.00052 0.00002" />
+      <inertia ixx="0.00143989" ixy="1.06324E-05" ixz="-7.92E-08" iyy="0.001354656" iyz="-2.602E-07" izz="0.001399779" />
+    </inertial>
+  </link>
+  
+  <joint name="J1" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.185" />
+    <parent link="base_link" />
+    <child link="J1_link" />
+    <axis xyz="0 0 1" />
+    <limit effort="160" lower="-3.490658503988659" upper="3.490658503988659" velocity="2.6179938779914944" />
+  </joint>
+  <joint name="J2" type="revolute">
+    <origin rpy="0 0 0" xyz="0.0 0 0" />
+    <parent link="J1_link" />
+    <child link="J2_link" />
+    <axis xyz="0 1 0" />
+    <limit effort="160" lower="-3.139847324337799" upper="3.139847324337799" velocity="2.6179938779914944" />
+  </joint>
+  <joint name="J3" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.41" />
+    <parent link="J2_link" />
+    <child link="J3_link" />
+    <axis xyz="0 -1 0" />
+    <limit effort="160" lower="-1.1868238913561442" upper="4.328416544945937" velocity="3.141592653589793" />
+  </joint>
+  <joint name="J4" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.0" />
+    <parent link="J3_link" />
+    <child link="J4_link" />
+    <axis xyz="-1 0 0" />
+    <limit effort="40" lower="-3.3161255787892263" upper="3.3161255787892263" velocity="3.9269908169872414" />
+  </joint>
+  <joint name="J5" type="revolute">
+    <origin rpy="0 0 0" xyz="0.43 0 0" />
+    <parent link="J4_link" />
+    <child link="J5_link" />
+    <axis xyz="0 -1 0" />
+    <limit effort="40" lower="-3.139847324337799" upper="3.139847324337799" velocity="3.9269908169872414" />
+  </joint>
+  <joint name="J6" type="revolute">
+    <origin rpy="0 0 0" xyz="0 -0.13 0" />
+    <parent link="J5_link" />
+    <child link="J6_link" />
+    <axis xyz="-1 0 0" />
+    <limit effort="40" lower="-3.9269908169872414" upper="3.9269908169872414" velocity="3.9269908169872414" />
+  </joint>
+  
+  <link name="wbase" />
+  <joint name="base_link-wbase" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.185" />
+    <parent link="base_link" />
+    <child link="wbase" />
+  </joint>
+  
+  <link name="flange" />
+  <joint name="J6-flange" type="fixed">
+    <origin rpy="0 0 0" xyz="0.145 0 0" />
+    <parent link="J6_link" />
+    <child link="flange" />
+  </joint>
+  
+  <joint name="base_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 .75" />
+    <parent link="world" />
+    <child link="base_link" />
+  </joint>
+  
+  <joint name="child_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="flange" />
+    <child link="ee_link" />
+  </joint>
+<link name="tool0" /><joint name="flange_to_tool0" type="fixed"><parent link="flange" /><child link="tool0" /><origin xyz="0 0 0" rpy="0 0 0" /></joint><joint name="tool0_to_gripper" type="fixed"><parent link="tool0" /><child link="epick_base_link" /><origin xyz="0 0 0" rpy="0 1.5708 0" /></joint><ros2_control name="epick_driver_ros2_control" type="system">
+    <hardware>
+      <plugin>epick_driver/EpickGripperHardwareInterface</plugin>
+      
+      <param name="usb_port">/dev/ttyUSB0</param>
+      <param name="baud_rate">115200</param>
+      <param name="timeout">0.2</param>
+      
+      
+      <param name="use_dummy">False</param>
+      
+      <param name="slave_address">0x9</param>
+      
+      <param name="mode">AdvancedMode</param>
+      
+      <param name="grip_max_vacuum_pressure">-60</param>
+      <param name="grip_min_vacuum_pressure">-10</param>
+      <param name="grip_timeout">25.0</param>
+      <param name="release_timeout">2.0</param>
+    </hardware>
+    <gpio name="gripper">
+      
+      <command_interface name="grip_cmd" />
+      
+      <state_interface name="grip_cmd" />
+      
+      <state_interface name="object_detection_status" />
+    </gpio>
+    
+    <joint name="gripper">
+      
+      <state_interface name="position" />
+    </joint>
+  </ros2_control>
+  
+  <link name="epick_base_link" />
+  <link name="epick_body">
+    <visual>
+      
+      <origin rpy="0 0 0" xyz="0 0 -0.05115" />
+      <geometry>
+        <mesh filename="package://merge/mesh/epick/visual/epick_body.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="epick_gray">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.1023" radius="0.044" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="epick_base_link_to_epick_body" type="fixed">
+    <parent link="epick_base_link" />
+    <child link="epick_body" />
+    <origin rpy="0 0 0" xyz="0 0 0.05115" />
+  </joint>
+  <link name="epick_suction_cup">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.012" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.012" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="epick_body_to_epick_suction_cup" type="fixed">
+    <parent link="epick_body" />
+    <child link="epick_suction_cup" />
+    <origin rpy="0 0 0" xyz="0 0 0.05865" />
+  </joint>
+  
+  
+  <link name="epick_tip" />
+  <joint name="epick_suction_cup_to_epick_tip" type="fixed">
+    <parent link="epick_suction_cup" />
+    <child link="epick_tip" />
+    <origin rpy="0 0 0" xyz="0 0 0.0075" />
+  </joint>
+  
+  
+  <link name="epick_tcp" />
+  <joint name="epick_tip_to_epick_tcp" type="fixed">
+    <parent link="epick_tip" />
+    <child link="epick_tcp" />
+    <origin rpy="0 0 0" xyz="0 0 -0.0" />
+  </joint>
+  
+  <link name="epick_vacuum_state" />
+  <joint name="gripper" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="epick_tcp" />
+    <child link="epick_vacuum_state" />
+    <limit effort="30" lower="0.0" upper="1.0" velocity="1.0" />
+  </joint>
+</robot>

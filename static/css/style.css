@@ -1,0 +1,446 @@
+/* グローバルスタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #4da8da;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(77, 168, 218, 0.5);
+}
+
+header p {
+    color: #a0a0a0;
+    font-size: 1.1em;
+}
+
+/* メインコンテンツ */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ビューアセクション */
+.viewer-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.viewer-header h2 {
+    color: #4da8da;
+    font-size: 1.5em;
+}
+
+.viewer-controls {
+    display: flex;
+    gap: 10px;
+}
+
+#renderCanvas {
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+    background: #0a0a0a;
+    display: block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.viewer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+#fpsCounter {
+    font-family: 'Courier New', monospace;
+    color: #4da8da;
+    font-weight: bold;
+}
+
+.status-connected {
+    color: #4caf50;
+    font-weight: bold;
+    padding: 5px 15px;
+    background: rgba(76, 175, 80, 0.2);
+    border-radius: 20px;
+}
+
+.status-disconnected {
+    color: #f44336;
+    font-weight: bold;
+    padding: 5px 15px;
+    background: rgba(244, 67, 54, 0.2);
+    border-radius: 20px;
+}
+
+/* コントロールセクション */
+.control-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+.control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.control-header h2 {
+    color: #4da8da;
+    font-size: 1.5em;
+}
+
+/* 関節コントロール */
+.joint-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.joint-control {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(77, 168, 218, 0.3);
+}
+
+.joint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.joint-header label {
+    font-weight: bold;
+    color: #4da8da;
+}
+
+.joint-value {
+    font-family: 'Courier New', monospace;
+    color: #ffa726;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.joint-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.joint-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4da8da;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(77, 168, 218, 0.8);
+}
+
+.joint-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4da8da;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(77, 168, 218, 0.8);
+}
+
+.joint-limits {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* ボタン */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.btn-secondary {
+    background: rgba(77, 168, 218, 0.3);
+    color: #4da8da;
+    border: 2px solid #4da8da;
+}
+
+.btn-secondary:hover {
+    background: rgba(77, 168, 218, 0.5);
+}
+
+.btn-preset {
+    flex: 1;
+    background: rgba(255, 167, 38, 0.3);
+    color: #ffa726;
+    border: 2px solid #ffa726;
+}
+
+.btn-preset:hover {
+    background: rgba(255, 167, 38, 0.5);
+}
+
+/* プリセットコントロール */
+.preset-controls {
+    margin-bottom: 30px;
+}
+
+.preset-controls h3 {
+    color: #4da8da;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.preset-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* アニメーションコントロール */
+.animation-controls {
+    margin-bottom: 30px;
+}
+
+.animation-controls h3 {
+    color: #4da8da;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.animation-controls button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* 情報パネル */
+.info-panel {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(77, 168, 218, 0.3);
+}
+
+.info-panel h3 {
+    color: #4da8da;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.info-panel p {
+    margin-bottom: 10px;
+    color: #c0c0c0;
+}
+
+.info-panel strong {
+    color: #4da8da;
+}
+
+/* スクロールバー */
+.control-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.control-section::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.control-section::-webkit-scrollbar-thumb {
+    background: rgba(77, 168, 218, 0.5);
+    border-radius: 10px;
+}
+
+.control-section::-webkit-scrollbar-thumb:hover {
+    background: rgba(77, 168, 218, 0.8);
+}
+
+/* ロボットモデル選択 */
+.model-selector {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(77, 168, 218, 0.3);
+    margin-bottom: 20px;
+}
+
+.model-selector label {
+    display: block;
+    color: #4da8da;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.model-select {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(77, 168, 218, 0.5);
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 1em;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.model-select:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #4da8da;
+}
+
+.model-select:focus {
+    outline: none;
+    border-color: #4da8da;
+    box-shadow: 0 0 10px rgba(77, 168, 218, 0.3);
+}
+
+.model-select option {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+.model-select optgroup {
+    background: #16213e;
+    color: #4da8da;
+    font-weight: bold;
+}
+
+.current-model-info {
+    background: rgba(77, 168, 218, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(77, 168, 218, 0.3);
+    margin-bottom: 20px;
+}
+
+.current-model-info h3 {
+    color: #4da8da;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.current-model-info p {
+    margin: 5px 0;
+    color: #e0e0e0;
+}
+
+.model-desc {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    font-style: italic;
+}
+
+/* 通知アニメーション */
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
