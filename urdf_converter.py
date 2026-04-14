@@ -23,6 +23,7 @@ class URDFConverter:
         self.links = []
         self.joints = []
         self.tree = None
+        self.mesh_warning_shown = False  # メッシュ警告フラグ
         
         if os.path.exists(urdf_file_path):
             self.load_urdf()
@@ -67,6 +68,11 @@ class URDFConverter:
         visual = link_elem.find('visual')
         if visual is not None:
             link_data['visual'] = self.parse_visual(visual)
+        
+        # コリジョン情報（ビジュアルが使えない場合のフォールバック）
+        collision = link_elem.find('collision')
+        if collision is not None:
+            link_data['collision'] = self.parse_visual(collision)  # 同じ構造
         
         return link_data
     
@@ -343,13 +349,48 @@ class URDFConverter:
             }
         
         elif geom_type == 'mesh':
-            # メッシュファイルは現時点では対応しない（将来的にGLTF変換など）
-            print(f"Mesh geometry not yet supported: {geometry['filename']}")
-            # フォールバック: ボックスを表示
+            # メッシュファイルは読み込めないが、より適切なプレースホルダーを表示
+            # 最初の1回だけ警告を表示
+            if not self.mesh_warning_shown:
+                print(f"Note: External mesh files not supported, using geometric approximations for '{self.robot_name}'")
+                self.mesh_warning_shown = True
+            
+            # リンク名から適切なサイズを推定
+            link_name_lower = name.lower()
+            
+            # デフォルトサイズ
+            size = 0.08
+            height = 0.15
+            
+            # リンク名から推定サイズを決定
+            if 'base' in link_name_lower:
+                size = 0.15
+                height = 0.1
+            elif 'shoulder' in link_name_lower or 'link1' in link_name_lower:
+                size = 0.08
+                height = 0.15
+            elif 'upper' in link_name_lower or 'link2' in link_name_lower:
+                size = 0.06
+                height = 0.4
+            elif 'forearm' in link_name_lower or 'link3' in link_name_lower:
+                size = 0.05
+                height = 0.35
+            elif 'wrist' in link_name_lower or 'link4' in link_name_lower or 'link5' in link_name_lower:
+                size = 0.04
+                height = 0.08
+            elif 'hand' in link_name_lower or 'gripper' in link_name_lower or 'finger' in link_name_lower:
+                size = 0.03
+                height = 0.06
+            elif 'flange' in link_name_lower or 'tool' in link_name_lower:
+                size = 0.05
+                height = 0.02
+            
+            # シリンダーで近似表示（ロボットリンクに適している）
             return {
-                'type': 'box',
+                'type': 'cylinder',
                 'name': name,
-                'size': 0.1,
+                'radius': size,
+                'height': height,
                 'position': position,
                 'rotation': rotation,
                 'color': color
